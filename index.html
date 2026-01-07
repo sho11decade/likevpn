@@ -2,12 +2,63 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>疑似VPNサービス</title>
+    <title>Webレンダリングプロキシ</title>
+    <script>
+      window.ENDPOINT_BASE = 'https://likevpn-anb5dbcffmdpgeav.japaneast-01.azurewebsites.net/api/http_trigger?url=';
+    </script>
     <script src="main.js"></script>
 </head>
 <body>
-    
+    <div class="app-wrapper">
+        <header class="app-header">
+            <div class="header-top">
+                <h1 class="app-title">Webレンダリングプロキシ</h1>
+                <div class="header-controls">
+                    <button id="themeToogleBtn" class="icon-btn" title="ダークモード切り替え">🌙</button>
+                    <button id="clearCacheBtn" class="icon-btn" title="キャッシュをクリア">🗑️</button>
+                </div>
+            </div>
+            
+            <div class="input-group">
+                <input type="url" id="urlInput" placeholder="https://example.com">
+                <button id="fetchContentButton" class="primary-btn">コンテンツの取得</button>
+                <button id="shareUrlBtn" class="icon-btn" title="URLを共有">📋</button>
+            </div>
+            
+            <div id="pageInfoBar" class="page-info-bar" style="display: none;">
+                <span id="pageTitle" class="info-item"></span>
+                <span id="pageUrl" class="info-item"></span>
+                <span id="loadTime" class="info-item"></span>
+            </div>
+        </header>
+
+        <div class="toolbar">
+            <button id="reloadBtn" class="tool-btn" title="ページを再読み込み">🔄 再読み込み</button>
+            <button id="fullscreenBtn" class="tool-btn" title="全画面表示">⛶ 全画面</button>
+            <button id="historyToggleBtn" class="tool-btn" title="履歴を表示">📜 履歴</button>
+        </div>
+
+        <div class="main-content">
+            <div id="contentDisplay" class="content-area">
+                <!-- 取得したコンテンツがここに表示されます -->
+            </div>
+            
+            <aside id="historySidebar" class="history-sidebar">
+                <div class="sidebar-header">
+                    <h3>アクセス履歴</h3>
+                    <button id="clearHistoryBtn" class="close-btn">✕</button>
+                </div>
+                <div id="historyList" class="history-list">
+                    <!-- 履歴がここに表示されます -->
+                </div>
+            </aside>
+        </div>
+
+        <footer class="app-footer">
+            <p>著作権などに関して一切の責任を負いません。</p>
+        </footer>
+    </div>
 </body>
 </html>
